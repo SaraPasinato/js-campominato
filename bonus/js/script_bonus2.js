@@ -28,46 +28,50 @@ const maxMines = 16;
 const maxChoice = 20 - maxMines; //// TODO cambiare 20 in 100 
 // difficoltà 0 inpostata default 
 const min = 1;
-let max = 100; //// : function random 100 incluso
+let max = 50;
+//// : function random 100 incluso
 
 let point = 0; //punteggio user
 
 //? Inizializzo element html tag
-const level=document.getElementById("level");
+const level = document.getElementById("level");
+const btnPlay = document.getElementById("btn-play");
 
-console.log("------------ CAMPO MINATO ----------");
-getLevel();
 
-fillArrayRandom(mines, maxMines);
- console.log("********* Queste sono le mine: *********");
- console.table(mines);
-// getUserChioice(choices, maxChoice, mines);
-// console.log("****** Riepilogo delle tue scelte: ******");
-// console.table(choices);
 
-// console.log("******* IL TUO PUNTEGGIO E': ******");
-// console.log("       ******** " + point + " pt. ********  ");
+btnPlay.addEventListener("click", function () {
+
+    console.log("------------ CAMPO MINATO ----------");
+    max.value = getLevel(level.value);
+
+    fillArrayRandom(mines, maxMines);
+    console.log("********* Queste sono le mine: *********");
+    console.table(mines);
+    getUserChioice(choices, maxChoice, mines);
+    console.log("****** Riepilogo delle tue scelte: ******");
+    console.table(choices);
+
+    console.log("******* IL TUO PUNTEGGIO E': ******");
+    console.log("       ******** " + point + " pt. ********  ");
+
+});
+
+
 
 /**
  *  setta il livello della partita
  */
-function getLevel() {
-    let user = level.value;
-    
+function getLevel(user) {
     if (user < 0 || user > 2 || !user || user == " " || isNaN(user)) {
         alert("hai inserito un valore non valido.")
     }
-
     switch (user) {
         case 0:
-            max = 100;
-            break;
+            return max = 100;
         case 1:
-            max = 80;
-            break;
+            return max = 80;
         case 2:
-            max = 50;
-            break;
+            return max = 50;
     }
 }
 //funzione di riempiemnto scelte utente con maxChioce elementi da riempire + controllo duplicati
