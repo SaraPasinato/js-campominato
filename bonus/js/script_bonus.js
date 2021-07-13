@@ -7,8 +7,8 @@
  * Ogni  volta che l'utente sceglie un numero che non è presente tra le bombe, guadagna un punto e poi gli chiediamo un altro numero. //*OK
  * Se il numero scelto dall'utente è presente tra i numeri bomba, la partita termina. //*OK
  * Quando la partita termina, comunichiamo all'utente il suo punteggio. //*OK
- * ?! parte bonus in cartella BONUS
- *  !BONUS 1#: (da fare solo se funziona tutto il resto)
+ * ?! parte bonus in cartella BONUS  //**OK
+ *  !BONUS 1#: (da fare solo se funziona tutto il resto) //* OK
  * All’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
  * con difficoltà 0 => tra 1 e 100
  * con difficoltà 1 => tra 1 e 80
@@ -25,11 +25,15 @@ const choices = [0];
 
 //in un futuro posso gestire maxMines --> cambiando anche scope della variabile
 const maxMines = 16;
-const maxChoice = 100 - maxMines; //// cambiare 20 in 100 
+const maxChoice = 20 - maxMines; //// TODO cambiare 20 in 100 
+// difficoltà 0 inpostata default 
+let min = 1;
+let max = 100; //// : function random 100 incluso
 
-const min = 1;
-const max = 100; //// : function random 100 incluso
-let point = 0;
+let point = 0; //punteggio user
+
+console.log("------------ CAMPO MINATO ----------");
+getLevel();
 
 fillArrayRandom(mines, maxMines);
 console.log("********* Queste sono le mine: *********");
@@ -41,8 +45,26 @@ console.table(choices);
 console.log("******* IL TUO PUNTEGGIO E': ******");
 console.log("       ******** " + point + " pt. ********  ");
 
-
-
+/**
+ *  setta il livello della partita
+ */
+function getLevel() {
+    let user = prompt("inserisci il livello di difficolta da 0 a 2:").trim();
+    while (user < 0 || user > 2 || !user || user == " " || isNaN(user)) {
+        user = parseInt(prompt("inserisci il livello di difficolta da 0 a 2:").trim());
+    }
+    switch (user) {
+        case 0:
+            max = 100;
+            break;
+        case 1:
+            max = 80;
+            break;
+        case 2:
+            max = 50;
+            break;
+    }
+}
 //funzione di riempiemnto scelte utente con maxChioce elementi da riempire + controllo duplicati
 /**
  * 
