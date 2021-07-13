@@ -7,12 +7,13 @@
  * Ogni  volta che l'utente sceglie un numero che non è presente tra le bombe, guadagna un punto e poi gli chiediamo un altro numero. //*OK
  * Se il numero scelto dall'utente è presente tra i numeri bomba, la partita termina. //*OK
  * Quando la partita termina, comunichiamo all'utente il suo punteggio. //*OK
- * !BONUS 2#: (da fare solo se funziona tutto il resto)
+ * ?! parte bonus in cartella BONUS
+ *  !BONUS 2#: (da fare solo se funziona tutto il resto)
  * All’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
  * con difficoltà 0 => tra 1 e 100
  * con difficoltà 1 => tra 1 e 80
  * con difficoltà 2 => tra 1 e 50
- * TODO: Bonus #1: Validazioni e i controlli in un secondo momento
+ * TODO: Bonus #1: Validazioni e i controlli in un secondo momento input pagina
  * TODO: Bonus #3: Stampa in pagina in file separato ma solo dopo che l'esercizio base sia corretto 
  */
 
