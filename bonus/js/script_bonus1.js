@@ -13,8 +13,8 @@
  * con difficoltà 0 => tra 1 e 100
  * con difficoltà 1 => tra 1 e 80
  * con difficoltà 2 => tra 1 e 50
- * TODO: Bonus #2: Validazioni e i controlli in un secondo momento input pagina
- * TODO: Bonus #3: Stampa in pagina in file separato ma solo dopo che l'esercizio base sia corretto 
+ * TODO: Bonus #2: Stampa in pagina in file separato ma solo dopo che l'esercizio base sia corretto 
+ * TODO: Bonus #3: Validazioni e i controlli in un secondo momento input pagina
  */
 
 
