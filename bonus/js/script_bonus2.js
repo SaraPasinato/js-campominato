@@ -13,50 +13,68 @@
  * con difficoltà 0 => tra 1 e 100
  * con difficoltà 1 => tra 1 e 80
  * con difficoltà 2 => tra 1 e 50
- * TODO: Bonus #2: Stampa in pagina in file separato ma solo dopo che l'esercizio base sia corretto 
- * TODO: Bonus #3: Validazioni e i controlli in un secondo momento input pagina
+ * TODO: Bonus #2: Stampa in pagina in file separato ma solo dopo che l'esercizio base sia corretto //* OK
+ * TODO: Bonus #3: Validazioni e i controlli in un secondo momento input pagina  //*OK
  */
 
 
 // ? 1: dichiarazione variabili 
 // array da riempire 
-const mines = [0];
-const choices = [0];
+let mines = [0];
+let choices = [0];
 
 //in un futuro posso gestire maxMines --> cambiando anche scope della variabile
 const maxMines = 16;
-const maxChoice = 20 - maxMines; //// TODO cambiare 20 in 100 
+const maxChoice = 100 - maxMines; //// TODO cambiare 20 in 100 
 // difficoltà 0 inpostata default 
 const min = 1;
 let max = 50;
-//// : function random 100 incluso
 
 let point = 0; //punteggio user
 
 //? Inizializzo element html tag
 const level = document.getElementById("level");
 const btnPlay = document.getElementById("btn-play");
+const btnReset = document.getElementById("btn-reset");
+const result = document.getElementById("result");
+const mineList = document.getElementById("mine-list");
+const userList = document.getElementById("user-list");
+const responseSectionElement = document.getElementById("response-section");
 
 
-
+//? Envent onclick buttno Gioca!
 btnPlay.addEventListener("click", function () {
 
     console.log("------------ CAMPO MINATO ----------");
     max.value = getLevel(level.value);
 
     fillArrayRandom(mines, maxMines);
+    var strMine = stampArrayString(mines, maxMines);
     console.log("********* Queste sono le mine: *********");
     console.table(mines);
     getUserChioice(choices, maxChoice, mines);
+    var strUser = stampArrayString(choices, maxChoice);
     console.log("****** Riepilogo delle tue scelte: ******");
     console.table(choices);
 
     console.log("******* IL TUO PUNTEGGIO E': ******");
     console.log("       ******** " + point + " pt. ********  ");
+    result.innerText = "Hai totalizzato : " + point + " pt.";
+    //? write on html 
+    mineList.innerHTML = strMine;
+    userList.innerHTML = strUser;
 
+    responseSectionElement.classList.remove("d-none");
+    btnPlay.classList.add("disabled");
 });
 
-
+btnReset.addEventListener("click", function () {
+    mines = [0];
+    choices = [0];
+    level.value = "0";
+    responseSectionElement.classList.add("d-none");
+    btnPlay.classList.remove("disabled");
+});
 
 /**
  *  setta il livello della partita
@@ -98,6 +116,8 @@ function getUserChioice(arr, maxElement, arr2) {
             console.log("hai guadagnato :" + point + " pt.\n Bravo...Continua così!!");
         } else {
             console.log("Mi dispiace !\n... ma hai trovato una mina al numero: " + user + "\n Hai totalizzato:" + point + " pt.");
+            //comunque lo inserico perché voglio vedere il risultato nella lista di elementi anche se blocco l'esecuzione
+            arr[i] = user;
             return;
         }
     }
@@ -139,4 +159,19 @@ function fillArrayRandom(arr, maxElement) {
 function getRandomNumber(maxRange, minRange) {
     maxRange++;
     return Math.floor(Math.random() * (maxRange - minRange)) + minRange;
+}
+
+/** ritorna una stringa con i valori dell'array
+ * 
+ * @param {array: namber} arr 
+ * @param {number} len  lunghezza arr
+ * @returns 
+ */
+function stampArrayString(arr, len) {
+    let msg = "";
+    for (let i = 0; i < len; i++) {
+        if (isNaN(arr[i])) return msg += " ";
+        msg += "<li> " + arr[i] + " </li>\n";
+    }
+    return msg;
 }

@@ -9,14 +9,10 @@
 }
 .row{
     min-height: 20vh;
-   border:3px dotted lime;
-
 }
 
 .items{
     height: 100%;
-    border:3px dotted chocolate;
-
 }
 
 .px-6{
@@ -25,4 +21,9 @@
 
 h1,h2,h3,h4{
     font-family: 'Secular One', sans-serif;
+}
+
+ul li{
+ list-style-type: none;
+ display: inline;
 }

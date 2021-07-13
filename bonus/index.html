@@ -38,17 +38,37 @@
                 <!--  conterrà il pulsante Play -->
                 <div class="col-12 col-md-6 align-self-center ">
                     <div class="items text-center">
-                        <button id="btn-play" type="button" class="btn btn-outline-warning py-2 px-6 fw-bold">Gioca!</button>
+                        <button id="btn-play" type="button" class="btn btn-warning py-2 px-6 fw-bold">Gioca!</button>
+                        <button id="btn-reset" type="button" class="btn btn-outline-danger my-2 py-2 px-6 fw-bold">Reset!</button>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="response-section"class="container-sm mt-3">
+        <section id="response-section"class="container-sm mt-3 d-none">
             <div id="response-items"class="row justify-content-center">
                 <!--  conterrà la risposta  e i valori inseriti dall'utente-->
                 <div class="col-12 col-md-6 ">
-                    <div class="items">
+                    <div class="items text-center">
+                        <h2 class="text-uppercase">Il tuo punteggio</h2>
+                        <p id="result" class="lead"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="recap-items"class="row justify-content-between">
+                <!--  conterrà la risposta  e i valori inseriti dall'utente-->
+                <div class="col-12 col-md-6">
+                    <div class="items text-center">
+                        <h4 class="text-uppercase text-success">Riepilogo mine:</h4>
+                        <ul id="mine-list">
 
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="items text-center">
+                        <h4 class="text-uppercase text-success">Riepilogo scelte utente:</h4>
+                        <ul id="user-list">
+                        </ul>
                     </div>
                 </div>
             </div>
