@@ -1,12 +1,12 @@
 /**
  * ! Consegna
  * Il computer deve generare 16 numeri casuali tra 1 e 100, queste saranno le nostre bombe. //* OK
- * I numeri delle bombe non possono essere duplicati (i 16 numeri devono essere tutti diversi)
- * Il giocatore, deve cercare di non prendere le bombe. Gli chiederemo 100 - 16 volte di scegliere un numero, uno alla volta, sempre compreso tra 1 e 100.
- * L'utente non può inserire 2 volte lo stesso numero
- * Ogni  volta che l'utente sceglie un numero che non è presente tra le bombe, guadagna un punto e poi gli chiediamo un altro numero.
- * Se il numero scelto dall'utente è presente tra i numeri bomba, la partita termina.
- * Quando la partita termina, comunichiamo all'utente il suo punteggio.
+ * I numeri delle bombe non possono essere duplicati (i 16 numeri devono essere tutti diversi) //*OK
+ * Il giocatore, deve cercare di non prendere le bombe. Gli chiederemo 100 - 16 volte di scegliere un numero, uno alla volta, sempre compreso tra 1 e 100. //*OK
+ * L'utente non può inserire 2 volte lo stesso numero //*OK
+ * Ogni  volta che l'utente sceglie un numero che non è presente tra le bombe, guadagna un punto e poi gli chiediamo un altro numero. //*OK
+ * Se il numero scelto dall'utente è presente tra i numeri bomba, la partita termina. //*OK
+ * Quando la partita termina, comunichiamo all'utente il suo punteggio. //*OK
  * !BONUS 2#: (da fare solo se funziona tutto il resto)
  * All’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
  * con difficoltà 0 => tra 1 e 100
@@ -19,30 +19,66 @@
 // ? 1: dichiarazione variabili 
 
 const mines =[0];
+const choices=[0];
 
-//in un futuro posso gestire maxMines --cambiando anche scope della variabile
+//in un futuro posso gestire maxMines --> cambiando anche scope della variabile
 const maxMines=16; 
-let maxChoice= 100 - maxMines; 
+let maxChoice= 100 - maxMines; //// cambiare 20 in 100 
+
 const min=1;
 const max=100; //// : function random 100 incluso
+let point=0;
 
 fillArrayRandom(mines,maxMines);
 console.log("********* Queste sono le mine: *********");
 console.table(mines);
+getUserChioice(choices,maxChoice,mines);
+console.log("****** Riepilogo delle tue scelte: ******");
+console.table(choices);
+
+console.log("******* IL TUO PUNTEGGIO E': ******");
+console.log("       ******** "+ point+" pt. ********  ");
 
 
 
+//funzione di riempiemnto scelte utente con maxChioce elementi da riempire + controllo duplicati
+/**
+ * 
+ * @param {number} arr  array scelte utente
+ * @param {*} maxElement  massimo numero elementi
+ */
+function getUserChioice(arr,maxElement,arr2){
+    
+    let user=0;
+    let i=0;
+    while(i<maxElement){
+        user=parseInt(prompt("inserisci un numero: ("+ (i+1)+" /"+maxElement+" ):","2").trim());
+        //// validazione input utente
+        if (arr.includes(user)){
+          alert("hai inserito un numero già presente ritenta.");
+        }else if (user<min || user>max || isNaN(user) || user===" "){    // controllo la input sia compreso tra 1 e 100 
+        alert("hai inserito un numero non valido."); 
+       }else if (!hasBomb(user,arr2)){
+          point++;
+          arr[i]=user;
+          i++;
+          console.log("hai guadagnato :"+ point+ " pt.\n Bravo...Continua così!!");
+       }else{
+         console.log("Mi dispiace !\n... ma hai trovato una mina al numero: "+ user +"\n Hai totalizzato:"+ point+ " pt.");
+         return;
+       }
+    }
+}
 
-
-
-
-
-
-
-
-//TODO:funzione di riempiemnto scelte utente con maxChioce elementi da riempire + controllo duplicati
-//TODO:validazione input utente
-
+/** test inclusione
+ * 
+ * @param {number} num  numero user  
+ * @param {*} mines     array di mine
+ * @returns  {boolean} ritorna se sia incluso o meno il numero nell'array mine
+ */
+function hasBomb (num ,mines){
+   return (mines.includes(num)? true :false);
+}
 //// funzione fillArrayRandom: deve riempire l'array passato di numeri casuali ,max elementi da riempire
 /** riempe un array di numeri casuali 
  * 
