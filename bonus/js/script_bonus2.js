@@ -32,27 +32,32 @@ let max = 100; //// : function random 100 incluso
 
 let point = 0; //punteggio user
 
+//? Inizializzo element html tag
+const level=document.getElementById("level");
+
 console.log("------------ CAMPO MINATO ----------");
 getLevel();
 
 fillArrayRandom(mines, maxMines);
-console.log("********* Queste sono le mine: *********");
-console.table(mines);
-getUserChioice(choices, maxChoice, mines);
-console.log("****** Riepilogo delle tue scelte: ******");
-console.table(choices);
+ console.log("********* Queste sono le mine: *********");
+ console.table(mines);
+// getUserChioice(choices, maxChoice, mines);
+// console.log("****** Riepilogo delle tue scelte: ******");
+// console.table(choices);
 
-console.log("******* IL TUO PUNTEGGIO E': ******");
-console.log("       ******** " + point + " pt. ********  ");
+// console.log("******* IL TUO PUNTEGGIO E': ******");
+// console.log("       ******** " + point + " pt. ********  ");
 
 /**
  *  setta il livello della partita
  */
 function getLevel() {
-    let user = prompt("inserisci il livello di difficolta da 0 a 2:").trim();
-    while (user < 0 || user > 2 || !user || user == " " || isNaN(user)) {
-        user = parseInt(prompt("inserisci il livello di difficolta da 0 a 2:").trim());
+    let user = level.value;
+    
+    if (user < 0 || user > 2 || !user || user == " " || isNaN(user)) {
+        alert("hai inserito un valore non valido.")
     }
+
     switch (user) {
         case 0:
             max = 100;

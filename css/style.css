@@ -1,0 +1,28 @@
+#form-section{
+    background-color: teal;
+    border-radius: 20px;
+}
+
+#response-section{
+    background-color:orange;
+    border-radius: 20px;
+}
+.row{
+    min-height: 20vh;
+   border:3px dotted lime;
+
+}
+
+.items{
+    height: 100%;
+    border:3px dotted chocolate;
+
+}
+
+.px-6{
+    padding: 0px 25%;
+}
+
+h1,h2,h3,h4{
+    font-family: 'Secular One', sans-serif;
+}
