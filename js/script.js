@@ -18,7 +18,7 @@
  */
 
 // ? 1: dichiarazione variabili 
-
+// array da riempire 
 const mines = [0];
 const choices = [0];
 
