@@ -18,26 +18,26 @@
 
 // ? 1: dichiarazione variabili 
 
-const mines =[0];
-const choices=[0];
+const mines = [0];
+const choices = [0];
 
 //in un futuro posso gestire maxMines --> cambiando anche scope della variabile
-const maxMines=16; 
-let maxChoice= 100 - maxMines; //// cambiare 20 in 100 
+const maxMines = 16;
+let maxChoice = 100 - maxMines; //// cambiare 20 in 100 
 
-const min=1;
-const max=100; //// : function random 100 incluso
-let point=0;
+const min = 1;
+const max = 100; //// : function random 100 incluso
+let point = 0;
 
-fillArrayRandom(mines,maxMines);
+fillArrayRandom(mines, maxMines);
 console.log("********* Queste sono le mine: *********");
 console.table(mines);
-getUserChioice(choices,maxChoice,mines);
+getUserChioice(choices, maxChoice, mines);
 console.log("****** Riepilogo delle tue scelte: ******");
 console.table(choices);
 
 console.log("******* IL TUO PUNTEGGIO E': ******");
-console.log("       ******** "+ point+" pt. ********  ");
+console.log("       ******** " + point + " pt. ********  ");
 
 
 
@@ -47,26 +47,26 @@ console.log("       ******** "+ point+" pt. ********  ");
  * @param {number} arr  array scelte utente
  * @param {*} maxElement  massimo numero elementi
  */
-function getUserChioice(arr,maxElement,arr2){
-    
-    let user=0;
-    let i=0;
-    while(i<maxElement){
-        user=parseInt(prompt("inserisci un numero: ("+ (i+1)+" /"+maxElement+" ):","2").trim());
+function getUserChioice(arr, maxElement, arr2) {
+
+    let user = 0;
+    let i = 0;
+    while (i < maxElement) {
+        user = parseInt(prompt("inserisci un numero: (" + (i + 1) + " /" + maxElement + " ):", "2").trim());
         //// validazione input utente
-        if (arr.includes(user)){
-          alert("hai inserito un numero già presente ritenta.");
-        }else if (user<min || user>max || isNaN(user) || user===" "){    // controllo la input sia compreso tra 1 e 100 
-        alert("hai inserito un numero non valido."); 
-       }else if (!hasBomb(user,arr2)){
-          point++;
-          arr[i]=user;
-          i++;
-          console.log("hai guadagnato :"+ point+ " pt.\n Bravo...Continua così!!");
-       }else{
-         console.log("Mi dispiace !\n... ma hai trovato una mina al numero: "+ user +"\n Hai totalizzato:"+ point+ " pt.");
-         return;
-       }
+        if (arr.includes(user)) {
+            alert("hai inserito un numero già presente ritenta.");
+        } else if (user < min || user > max || isNaN(user) || user === " ") {    // controllo la input sia compreso tra 1 e 100 
+            alert("hai inserito un numero non valido.");
+        } else if (!hasBomb(user, arr2)) {
+            point++;
+            arr[i] = user;
+            i++;
+            console.log("hai guadagnato :" + point + " pt.\n Bravo...Continua così!!");
+        } else {
+            console.log("Mi dispiace !\n... ma hai trovato una mina al numero: " + user + "\n Hai totalizzato:" + point + " pt.");
+            return;
+        }
     }
 }
 
@@ -76,8 +76,8 @@ function getUserChioice(arr,maxElement,arr2){
  * @param {*} mines     array di mine
  * @returns  {boolean} ritorna se sia incluso o meno il numero nell'array mine
  */
-function hasBomb (num ,mines){
-   return (mines.includes(num)? true :false);
+function hasBomb(num, mines) {
+    return (mines.includes(num) ? true : false);
 }
 //// funzione fillArrayRandom: deve riempire l'array passato di numeri casuali ,max elementi da riempire
 /** riempe un array di numeri casuali 
@@ -85,17 +85,17 @@ function hasBomb (num ,mines){
  * @param {number} arr  di numeri casuali
  * @param {number} maxElement  elementi massimi in arr
  */
- function fillArrayRandom(arr,maxElement){
-     let current=0;
-    for(let i=0;i<maxElement;i++){
-        current=getRandomNumber(max,min);
+function fillArrayRandom(arr, maxElement) {
+    let current = 0;
+    for (let i = 0; i < maxElement; i++) {
+        current = getRandomNumber(max, min);
         //? controlla che il valore non sia già presente in arr in caso contrario estrae un altro numero casuale
-        if (arr.includes(current)){
-            current=getRandomNumber(max,min);
+        if (arr.includes(current)) {
+            current = getRandomNumber(max, min);
         }
-        arr[i]=current;
+        arr[i] = current;
     }
- }
+}
 
 /** ritorna un numero casuale estremi inclusi
  * 
@@ -103,7 +103,7 @@ function hasBomb (num ,mines){
  * @param {number} minRange  minimo incluso
  * @returns  un numero casuale tra min e max
  */
-function getRandomNumber(maxRange,minRange){
+function getRandomNumber(maxRange, minRange) {
     maxRange++;
-    return Math.floor(Math.random()*(maxRange - minRange))+minRange;
+    return Math.floor(Math.random() * (maxRange - minRange)) + minRange;
 }
