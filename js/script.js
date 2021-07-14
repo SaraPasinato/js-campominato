@@ -80,14 +80,15 @@ function hasBomb(num, mines) {
  * @param {number} maxElement  elementi massimi in arr
  */
 function fillArrayRandom(arr, maxElement) {
-    let current = 0;
-    for (let i = 0; i < maxElement; i++) {
-        current = getRandomNumber(max, min);
+    let i = 0;
+    let current=0;
+    while ( i < maxElement) {
+        current=getRandomNumber(max, min);
         //? controlla che il valore non sia già presente in arr in caso contrario estrae un altro numero casuale
-        if (arr.includes(current)) {
-            current = getRandomNumber(max, min);
+        if (!arr.includes(current)) {
+            arr[i] = current;
+            i++;
         }
-        arr[i] = current;
     }
 }
 

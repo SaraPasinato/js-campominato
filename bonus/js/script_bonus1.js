@@ -33,9 +33,9 @@ let max = 100; //// : function random 100 incluso
 let point = 0; //punteggio user
 
 console.log("------------ CAMPO MINATO ----------");
-getLevel();
+max=getLevel();
 
-fillArrayRandom(mines, maxMines);
+fillArrayRandom(mines, maxMines,max);
 console.log("********* Queste sono le mine: *********");
 console.table(mines);
 getUserChioice(choices, maxChoice, mines);
@@ -49,20 +49,18 @@ console.log("       ******** " + point + " pt. ********  ");
  *  setta il livello della partita
  */
 function getLevel() {
-    let user = prompt("inserisci il livello di difficolta da 0 a 2:").trim();
-    while (user < 0 || user > 2 || !user || user == " " || isNaN(user)) {
-        user = parseInt(prompt("inserisci il livello di difficolta da 0 a 2:").trim());
-    }
+    let user=0;
+    do{
+       user = parseInt(prompt("inserisci il livello di difficolta da 0 a 2:").trim());
+     } while (user < 0 || user > 2 || !user || user == " " || isNaN(user))
+      
     switch (user) {
         case 0:
-            max = 100;
-            break;
+          return  max = 100; 
         case 1:
-            max = 80;
-            break;
+          return  max = 80;  
         case 2:
-            max = 50;
-            break;
+          return  max = 50; 
     }
 }
 //funzione di riempiemnto scelte utente con maxChioce elementi da riempire + controllo duplicati
@@ -109,15 +107,16 @@ function hasBomb(num, mines) {
  * @param {number} arr  di numeri casuali
  * @param {number} maxElement  elementi massimi in arr
  */
-function fillArrayRandom(arr, maxElement) {
-    let current = 0;
-    for (let i = 0; i < maxElement; i++) {
-        current = getRandomNumber(max, min);
+function fillArrayRandom(arr, maxElement, max) {
+    let i = 0;
+    let current=0;
+    while ( i < maxElement) {
+        current=getRandomNumber(max, min);
         //? controlla che il valore non sia già presente in arr in caso contrario estrae un altro numero casuale
-        if (arr.includes(current)) {
-            current = getRandomNumber(max, min);
+        if (!arr.includes(current)) {
+            arr[i] = current;
+            i++;
         }
-        arr[i] = current;
     }
 }
 
