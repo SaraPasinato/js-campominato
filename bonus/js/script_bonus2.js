@@ -25,7 +25,7 @@ let choices = [0];
 
 //in un futuro posso gestire maxMines --> cambiando anche scope della variabile
 const maxMines = 16;
-const maxChoice = 100 - maxMines; 
+const maxChoice = 100 - maxMines;
 // difficoltà 0 inpostata default 
 const min = 1;
 
@@ -48,7 +48,7 @@ btnPlay.addEventListener("click", function () {
     console.log("------------ CAMPO MINATO ----------");
     let max = getLevel(parseInt(level.value));
 
-    fillArrayRandom(mines, maxMines,max);
+    fillArrayRandom(mines, maxMines, max);
     var strMine = stampArrayString(mines, maxMines);
     console.log("********* Queste sono le mine: *********");
     console.table(mines);
@@ -72,7 +72,7 @@ btnReset.addEventListener("click", function () {
     mines = [0];
     choices = [0];
     level.value = "0";
-    point=0;
+    point = 0;
     responseSectionElement.classList.add("d-none");
     btnPlay.classList.remove("disabled");
 });
@@ -121,7 +121,7 @@ function getUserChioice(arr, maxElement, arr2) {
     }
 }
 
-/** test inclusione
+/** test inclusione numero nelle mine
  * 
  * @param {number} num  numero user  
  * @param {*} mines     array di mine
@@ -134,9 +134,10 @@ function hasBomb(num, mines) {
 /** riempe un array di numeri casuali 
  * 
  * @param {number} arr  di numeri casuali
+ * @param {number} max numero massimo di estrazione
  * @param {number} maxElement  elementi massimi in arr
  */
-function fillArrayRandom(arr, maxElement,max) {
+function fillArrayRandom(arr, maxElement, max) {
     let current = 0;
     for (let i = 0; i < maxElement; i++) {
         current = getRandomNumber(max, min);
