@@ -84,7 +84,7 @@ function fillArrayRandom(arr, maxElement) {
     let current=0;
     while ( i < maxElement) {
         current=getRandomNumber(max, min);
-        //? controlla che il valore non sia già presente in arr in caso contrario estrae un altro numero casuale
+        //? controlla che il valore  sia già presente in arr 
         if (!arr.includes(current)) {
             arr[i] = current;
             i++;
