@@ -25,7 +25,7 @@ const choices = [0];
 
 //in un futuro posso gestire maxMines --> cambiando anche scope della variabile
 const maxMines = 16;
-const maxChoice = 20 - maxMines; //// TODO cambiare 20 in 100 
+const maxChoice = 100 - maxMines; ////  cambiare 20 in 100 
 // difficoltà 0 inpostata default 
 const min = 1;
 let max = 100; //// : function random 100 incluso
