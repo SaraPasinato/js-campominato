@@ -81,10 +81,6 @@ btnReset.addEventListener("click", function () {
  *  setta il livello della partita
  */
 function getLevel(user) {
-     console.log(typeof user, user);
-    // if (user < -1 || user > 2 || !user || user == " ") {
-    //     alert("hai inserito un valore non valido. select")
-    // }
     switch (user) {
         case 0:
             return max = 100;
