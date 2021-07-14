@@ -7,7 +7,7 @@
  * Ogni  volta che l'utente sceglie un numero che non è presente tra le bombe, guadagna un punto e poi gli chiediamo un altro numero. //*OK
  * Se il numero scelto dall'utente è presente tra i numeri bomba, la partita termina. //*OK
  * Quando la partita termina, comunichiamo all'utente il suo punteggio. //*OK
- * ?! parte bonus in cartella BONUS
+ * ?! parti bonus >>> in cartella BONUS
  */
 
 // ? 1: dichiarazione variabili 
