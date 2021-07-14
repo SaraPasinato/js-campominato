@@ -25,10 +25,10 @@ let choices = [0];
 
 //in un futuro posso gestire maxMines --> cambiando anche scope della variabile
 const maxMines = 16;
-const maxChoice = 100 - maxMines; //// TODO cambiare 20 in 100 
+const maxChoice = 100 - maxMines; 
 // difficoltà 0 inpostata default 
 const min = 1;
-let max = 50;
+
 
 let point = 0; //punteggio user
 
@@ -46,9 +46,9 @@ const responseSectionElement = document.getElementById("response-section");
 btnPlay.addEventListener("click", function () {
 
     console.log("------------ CAMPO MINATO ----------");
-    max.value = getLevel(level.value);
+    let max = getLevel(parseInt(level.value));
 
-    fillArrayRandom(mines, maxMines);
+    fillArrayRandom(mines, maxMines,max);
     var strMine = stampArrayString(mines, maxMines);
     console.log("********* Queste sono le mine: *********");
     console.table(mines);
@@ -72,6 +72,7 @@ btnReset.addEventListener("click", function () {
     mines = [0];
     choices = [0];
     level.value = "0";
+    point=0;
     responseSectionElement.classList.add("d-none");
     btnPlay.classList.remove("disabled");
 });
@@ -80,9 +81,10 @@ btnReset.addEventListener("click", function () {
  *  setta il livello della partita
  */
 function getLevel(user) {
-    if (user < 0 || user > 2 || !user || user == " " || isNaN(user)) {
-        alert("hai inserito un valore non valido.")
-    }
+     console.log(typeof user, user);
+    // if (user < -1 || user > 2 || !user || user == " ") {
+    //     alert("hai inserito un valore non valido. select")
+    // }
     switch (user) {
         case 0:
             return max = 100;
@@ -138,7 +140,7 @@ function hasBomb(num, mines) {
  * @param {number} arr  di numeri casuali
  * @param {number} maxElement  elementi massimi in arr
  */
-function fillArrayRandom(arr, maxElement) {
+function fillArrayRandom(arr, maxElement,max) {
     let current = 0;
     for (let i = 0; i < maxElement; i++) {
         current = getRandomNumber(max, min);
