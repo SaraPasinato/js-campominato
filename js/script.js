@@ -61,7 +61,7 @@ function getUserChioice(arr, maxElement, arr2) {
         } else {
             arr[i] = user;
             console.log("Mi dispiace !\n... ma hai trovato una mina al numero: " + user + "\n Hai totalizzato:" + point + " pt.");
-            console.log("*********** HAI VINTO *************");
+            console.log("*********** HAI PERSO *************");
             return;
         }
     }while(i < maxElement);
