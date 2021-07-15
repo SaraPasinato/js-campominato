@@ -78,13 +78,13 @@ function getUserChioice(arr, maxElement, arr2) {
         //// validazione input utente
         if (arr.includes(user)) {
             alert("hai inserito un numero già presente ritenta.");
-        } else if (user < min || user > max || isNaN(user) || user.trim() === " ") {    // controllo la input sia compreso tra 1 e 100 
+        } else if (user < min || user > max || isNaN(user) || user === " ") {    // controllo la input sia compreso tra 1 e 100 
             alert("hai inserito un numero non valido.");
         } else if (!hasBomb(user, arr2)) {
             point++;
             arr[i] = user;
             i++;
-            console.log("hai guadagnato :" + point + " pt.\n Bravo...Continua così!!");
+            console.log("hai guadagnato :" + point + " pt.\n ...Continua così!!");
         } else {
             console.log("Mi dispiace !\n... ma hai trovato una mina al numero: " + user + "\n Hai totalizzato:" + point + " pt.");
             return;
