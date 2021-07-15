@@ -17,7 +17,7 @@ const choices = [0];
 
 //in un futuro posso gestire maxMines --> cambiando anche scope della variabile
 const maxMines = 16;
-const maxChoice = 100 - maxMines; //// cambiare 20 in 100 
+const maxChoice = 20 - maxMines; //// cambiare 20 in 100 
 
 const min = 1;
 const max = 100; //// : function random 100 incluso
@@ -61,12 +61,12 @@ function getUserChioice(arr, maxElement, arr2) {
         } else {
             arr[i] = user;
             console.log("Mi dispiace !\n... ma hai trovato una mina al numero: " + user + "\n Hai totalizzato:" + point + " pt.");
-            console.log("*********** HAI PERSO *************");
+            console.log("%c *********** HAI PERSO *************",'background: #222; color: #bada55');
             return;
         }
     }while(i < maxElement);
 
-    console.log("*********** HAI VINTO *************");
+    console.log("%c *********** HAI VINTO *************", 'background: #222; color: #0f0');
 }
 
 /** test inclusione
