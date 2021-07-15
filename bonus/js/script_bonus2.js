@@ -101,11 +101,11 @@ function getUserChioice(arr, maxElement, arr2) {
     let user = 0;
     let i = 0;
     while (i < maxElement) {
-        user = parseInt(prompt("inserisci un numero: (" + (i + 1) + " /" + maxElement + " ):", "2").trim());
+        user = parseInt(prompt("inserisci un numero: (" + (i + 1) + " /" + maxElement + " ):", "2"));
         //// validazione input utente
         if (arr.includes(user)) {
             alert("hai inserito un numero già presente ritenta.");
-        } else if (user < min || user > max || isNaN(user) || user === " ") {    // controllo la input sia compreso tra 1 e 100 
+        } else if (user < min || user > max || isNaN(user) || user.trim() === " ") {    // controllo la input sia compreso tra 1 e 100 
             alert("hai inserito un numero non valido.");
         } else if (!hasBomb(user, arr2)) {
             point++;
