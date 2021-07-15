@@ -27,6 +27,7 @@ fillArrayRandom(mines, maxMines);
 console.log("********* Queste sono le mine: *********");
 console.table(mines);
 getUserChioice(choices, maxChoice, mines);
+
 console.log("****** Riepilogo delle tue scelte: ******");
 console.table(choices);
 
@@ -38,10 +39,11 @@ console.log("       ******** " + point + " pt. ********  ");
 /**
  * 
  * @param {number} arr  array scelte utente
+ * @param {number} arr2 array mine 
  * @param {*} maxElement  massimo numero elementi
  */
 function getUserChioice(arr, maxElement, arr2) {
-    let user=2;
+    let user;
     let i = 0;
     do {
         user = parseInt(prompt("inserisci un numero: (" + (i + 1) + " /" + maxElement + " ):","2").trim());
@@ -55,8 +57,9 @@ function getUserChioice(arr, maxElement, arr2) {
             point++;
             arr[i] = user;
             i++;
-            console.log("hai guadagnato :" + point + " pt.\n Bravo...Continua così!!");
+            console.log("hai guadagnato :" + point + " pt.\n ...Continua così!!");
         } else {
+            arr[i] = user;
             console.log("Mi dispiace !\n... ma hai trovato una mina al numero: " + user + "\n Hai totalizzato:" + point + " pt.");
             console.log("*********** HAI VINTO *************");
             return;
