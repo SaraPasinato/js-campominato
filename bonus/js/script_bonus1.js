@@ -90,6 +90,8 @@ function getUserChioice(arr, maxElement, arr2) {
             return;
         }
     }
+    console.log("*********** HAI VINTO *************");
+
 }
 
 /** test inclusione
